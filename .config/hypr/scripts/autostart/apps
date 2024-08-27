@@ -3,8 +3,6 @@
 # Apps
 spotify &
 vesktop &
-thunderbird &
-obsidian &
 
 # Terminal Apps
 kitty --class btop btop &
