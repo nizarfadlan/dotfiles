@@ -38,5 +38,11 @@ wl-paste --watch cliphist store &
 # Audio
 easyeffects --gapplication-service &
 
+# Bluetooth
+blueman-applet &
+
+# Network
+nm-applet --indicator &
+
 # Gestures
 libinput-gestures &

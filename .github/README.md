@@ -213,7 +213,7 @@ First, lets start with the required base packages for the configuration to funct
 ```bash
 yay -Sy hyprland hyprlock hypridle xdg-desktop-portal-hyprland hyprpicker \
         swww waybar rofi-wayland swaync swayosd-git wl-clipboard wl-clip-persist \
-        pyprland qt5ct pavucontrol cliphist playerctl udiskie devify fzf jq eza fd \
+        pyprland qt5ct kvantum-qt5 qt5-wayland pavucontrol cliphist playerctl udiskie devify fzf jq eza fd \
         catppuccin-gtk-theme-macchiato catppuccin-cursors-macchiato cava slurp grim satty \
         vivid fish starship lsb-release libinput-gestures gestures
 ```
