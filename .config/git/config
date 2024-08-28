@@ -5,15 +5,15 @@
   path = ~/.config/git/themes/catppuccin.gitconfig
 
 [user]
-  name = Sergio Laín
-  email = sergio.lac@pm.me
-  signingKey = 8429B2EE312F8150
+  name = nizarfadlan
+  email = hello@nizarfadlan.dev
+  signingKey = F5D8FB50B87D5EF5
 
 [safe]
   directory = ~/dev
 
 [credential "https://github.com"]
-  username = Matt-FTW
+  username = nizarfadlan
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
