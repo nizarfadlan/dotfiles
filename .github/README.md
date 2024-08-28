@@ -122,6 +122,7 @@ Here is all the information about my setup:
 | **Color Picker**               | [hyprpicker](https://github.com/hyprwm/hyprpicker)                                                                                           |
 | **Screenshot Tool**            | [hyprshot](https://github.com/Gustash/Hyprshot) (Using [grim](https://sr.ht/~emersion/grim/) and [slurp](https://github.com/emersion/slurp)) |
 | **Image Annotation**           | [satty](https://github.com/gabm/Satty) [:gear:](../.config/satty/)                                                                           |
+| **Gestures Manager**           | [libinput-gestures](https://github.com/bulletmark/libinput-gestures) (with [gestures](https://gitlab.com/nokun/gestures))                     |
 
 </details>
 
@@ -214,7 +215,7 @@ yay -Sy hyprland hyprlock hypridle xdg-desktop-portal-hyprland hyprpicker \
         swww waybar rofi-wayland swaync swayosd-git wl-clipboard wl-clip-persist \
         pyprland qt5ct pavucontrol cliphist playerctl udiskie devify fzf jq eza fd \
         catppuccin-gtk-theme-macchiato catppuccin-cursors-macchiato cava slurp grim satty \
-        vivid fish starship
+        vivid fish starship lsb-release libinput-gestures gestures
 ```
 
 On the first line we have the hypr ecosystem packages and on the other lines we have the must have packages.

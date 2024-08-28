@@ -81,7 +81,7 @@
   delegate_to: localhost
 
 # FISH
-- name: intall fish, fisher and other tools
+- name: install fish, fisher and other tools
   pacman:
     name:
       - fish
