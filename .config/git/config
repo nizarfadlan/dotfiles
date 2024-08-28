@@ -5,7 +5,7 @@
   path = ~/.config/git/themes/catppuccin.gitconfig
 
 [user]
-  name = nizarfadlan
+  name = Nizar Izzuddin Yatim Fadlan
   email = hello@nizarfadlan.dev
   signingKey = F5D8FB50B87D5EF5
 
