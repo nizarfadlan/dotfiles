@@ -9,6 +9,7 @@ set -xg XDG_SCRIPT_HOME $HOME/.local/script
 # Respect XDG Specification
 set -xg CONAN_USER_HOME $XDG_CONFIG_HOME
 set -xg GOPATH $XDG_DATA_HOME/go
+set -xg BUNPATH $HOME/.bun
 set -xg GOMODCACHE $XDG_CACHE_HOME/go/mod
 set -xg RUSTUP_HOME $XDG_DATA_HOME/rustup
 set -xg CARGO_HOME $XDG_DATA_HOME/cargo
@@ -56,6 +57,7 @@ fish_add_path $XDG_DATA_HOME/bob/nvim-bin
 fish_add_path $XDG_DATA_HOME/npm/bin
 fish_add_path $XDG_DATA_HOME/nvim/mason/bin
 fish_add_path $HOME/.yarn/bin
+fish_add_path $BUNPATH/bin
 
 # Editor
 set -xg EDITOR nvim
