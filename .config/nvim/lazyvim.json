@@ -35,7 +35,6 @@
     "plugins.extras.editor.telescope.telescope-extended",
     "plugins.extras.editor.telescope.undotree",
     "plugins.extras.editor.telescope.zoxide",
-    "plugins.extras.editor.terminal.floaterm",
     "plugins.extras.editor.trouble-extended",
     "plugins.extras.formatting.prettier-extended",
     "plugins.extras.formatting.trim_newlines",
@@ -72,12 +71,12 @@
     "plugins.extras.util.kitty-scrollback",
     "plugins.extras.util.mason-lock",
     "plugins.extras.util.neovide",
-    "plugins.extras.util.persisted",
     "plugins.extras.util.persistence-extended",
     "plugins.extras.util.smart-splits",
     "plugins.extras.util.vscode",
     "plugins.extras.util.wakatime",
-    "plugins.extras.util.yadm"
+    "plugins.extras.util.yadm",
+    "plugins.extras.util.yazi"
   ],
   "news": {
     "NEWS.md": "6520"

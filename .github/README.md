@@ -46,12 +46,13 @@ If you wanna know how to **install** them, go to the [setup](#wrench--setup) sec
 
 I've been working on this for a long time so I hope you like it!
 
-### ✨ Features
+## ✨ Features
 
 - :dark_sunglasses: Dark Mode for the Whole System
 - :zzz: Neovim powered by LazyVim with Custom Extras Added (More than 200!)
 - :point_up: Screenshot, Keybindings, Games, Clipboard, Color and Wallpaper Picker
 - :window: Animations for nearly all the System
+- :wrench: Modular Configuration
 - :desktop_computer: AwesomeWM Workspace Behavior
 - :open_file_folder: Following XDG Base Directory Standard
 - :car: Automatic Mounting of USB Devices with Notification
@@ -71,7 +72,7 @@ I've been working on this for a long time so I hope you like it!
 
 ---
 
-### 🌸 Core System Info
+## 🌸 Core System Info
 
  <img src="assets/rice-logo.png" alt="rice-logo" align="right" width="390px">
 
@@ -173,12 +174,12 @@ Here is all the information about my setup:
 | **PDF Viewer**           | [Zathura](https://pwmt.org/projects/zathura/) [:gear:](../.config/zathura/)                                             |
 | **Note Taking App**      | 💖 [Obsidian](https://obsidian.md/) [:gear:](../.config/obsidian/)                                                      |
 | **Video Player**         | [MPV](https://mpv.io/) [:gear:](../.config/mpv/)                                                                        |
-| **Image Viewer**         | [qimgv](https://github.com/easymodo/qimgv) [:gear:](../.config/qimgv//)                                                 |
+| **Image Viewer**         | [qimgv](https://github.com/easymodo/qimgv) [:gear:](../.config/qimgv/)                                                  |
 | **File Manager**         | [Nemo](https://community.linuxmint.com/software/view/nemo)                                                              |
-| **Audio Effects**        | [Easyeffects](https://github.com/wwmm/easyeffects)                                                                      |
+| **Audio Effects**        | [Easyeffects](https://github.com/wwmm/easyeffects) [:gear:](../.config/easyeffects/)                                    |
 | **Image Editor**         | [Krita](https://krita.org/)                                                                                             |
 | **VM Manager**           | [Virt-Manager](https://virt-manager.org/) ([QEMU](https://www.qemu.org/))                                               |
-| **Recording Program**    | [OBS](https://obsproject.com/)                                                                                          |
+| **Recording Program**    | [OBS](https://obsproject.com/) [:gear:](../.config/obs-studio/)                                                         |
 | **Office Apps**          | [LibreOffice](https://www.libreoffice.org/)                                                                             |
 
 </details>
@@ -200,64 +201,79 @@ Here is all the information about my setup:
 
 > [!WARNING]
 > The installation guide is under construction, try it at your own risk!
+>
+> It is also ment only for Arch based systems. All other distros are not supported and I will not be helping with issues related to them.
 
-### :package: Dependencies Installation
+> [!TIP]
+> Do you want to only install the neovim config? [Check over here!](https://github.com/Matt-FTW/dotfiles/tree/main/.config/nvim#package-neovim-standalone-config)
+
+## :package: Dependencies Installation
 
 > [!NOTE]
-> The names of the packages are from the AUR and Arch Repos; adapt them to your system. Most of the packages are available on other distros official repos (most of the time out-to-date). To install CLI/TUI specific packages in non-arch based distros, I recommend to use [homebrew](https://brew.sh/).
+> The names of the packages are from the AUR and Arch Repos; adapt them to your system. Most of the packages are available on other distros official repos (most of the time out-to-date).
+>
+> To install CLI/TUI specific packages in non-arch based distros, I recommend to use [homebrew](https://brew.sh/).
+>
+> In the guide, I will be using [Yay](https://github.com/Jguer/yay) as the AUR helper. Be sure to [install it](../.local/bin/installYay) or change the commands to your preferred one.
 
 - **Base Packages**
 
-First, lets start with the required base packages for the configuration to function. Assuming you're running Arch Linux, and your AUR helper is [yay](https://github.com/Jguer/yay):
+  - **System**
+
+    ```bash
+    yay -Sy hyprland hyprlock hypridle xdg-desktop-portal-hyprland hyprpicker \
+            swww waybar waybar-updates rofi-wayland swaync swayosd-git \
+            wl-clipboard wl-clip-persist cliphist udiskie devify polkit-gnome playerctl \
+            pyprland grim slurp \
+    ```
+
+  - **CLI/TUI**
+
+    ```bash
+    yay -Sy fastfetch fzf jq eza fd vivid fish starship ripgrep bat yazi lsb-release libinput-gestures gestures
+    ```
+
+  - **GUI Apps**
+
+    ```bash
+    yay -Sy pavucontrol satty nemo zathura zathura-pdf-mupdf qimgv-light mpv
+    ```
+
+- **Graphics Drivers**
+
+> [!WARNING]
+> Skip this step if you already have the correct drivers for your graphics card.
+
+Chose one if this commands depending on your graphics card brand.
 
 ```bash
-yay -Sy hyprland hyprlock hypridle xdg-desktop-portal-hyprland hyprpicker \
-        swww waybar rofi-wayland swaync swayosd-git wl-clipboard wl-clip-persist \
-        pyprland qt5ct kvantum-qt5 qt5-wayland pavucontrol cliphist playerctl udiskie devify fzf jq eza fd \
-        catppuccin-gtk-theme-macchiato catppuccin-cursors-macchiato cava slurp grim satty \
-        vivid fish starship lsb-release libinput-gestures gestures
+# AMD (Open Source)
+yay -Sy xf86-video-amdgpu xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon vulkan-tools \
+        opencl-clover-mesa lib32-opencl-clover-mesa libva-mesa-driver lib32-libva-mesa-driver \
+        mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau vdpauinfo clinfo
+
+# Nvidia (Propietary)
+yay -Sy nvidia nvidia-utils nvidia-settings opencl-nvidia lib32-nvidia-utils \
+        lib32-opencl-nvidia cuda vdpauinfo clinfo
+
+# Intel (Open Source)
+yay -Sy xf86-video-intel vulkan-intel lib32-vulkan-intel vulkan-tools libva-intel-driver \
+        lib32-libva-intel-driver mesa lib32-mesa mesa-vdpau lib32-mesa-vdpau
 ```
 
-On the first line we have the hypr ecosystem packages and on the other lines we have the must have packages.
+- **Color Theme**
 
-- **Optional Packages**
-
-Now lets move to the Optional Packages (If you don't want to install any more packages, move to the Dotfiles Installation step)
+To install the color theme for GTK and QT apps use the following command:
 
 ```bash
-yay -Sy yazi nemo kitty ttf-ms-win11-auto ttf-jetbrainsmono-nerd zathura zathura-pdf-mupdf qimgv-light \
-         mpv
+yay -Sy catppuccin-gtk-theme-macchiato catppuccin-cursors-macchiato qt5ct qt5-wayland qt6-wayland
 ```
 
-Here we have some packages that you can replace with your favorite ones and are not required at all for the desktop to function (though it wont look the same). For example, the terminal (kitty), the file manager (nemo and yazi), the font (ttf-jetbrainsmono-nerd), the video player (mpv), etc.
-
-Useful CLI/TUI packages
+If you want to edit your GTK settings, install [nwg-look](https://github.com/nwg-piotr/nwg-look):
 
 ```bash
-yay -Sy ripgrep riprep-all sd duf nvtop btop dua-cli bat pacseek sysz gtrash-bin topgrade fastfetch
+yay -Sy nwg-look
 ```
-
-Useful GUI packages
-
-```bash
-yay -Sy pika-backup vesktop-bin nwg-displays nwg-look gnome-logs galculator gparted nm-connection-editor
-```
-
-- **Bluetooth**
-
-Lets start by installing bluez (bluetooth support) and overskride (GUI):
-
-```bash
-yay -Sy bluez overskride
-```
-
-After installing the required packages, we have to start the Bluetooth service. With systemd is pretty straightforward:
-
-```bash
-systemctl --user enable --now bluetooth.service
-```
-
-Now launch overskride and there you have it.
 
 - **Icon Theme**
 
@@ -284,8 +300,8 @@ mv Catppuccin-SE ~/.local/share/icons/
 Install the following fonts:
 
 ```bash
-yay -Sy ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono ttf-nerd-fonts-symbols-common \
-       ttf-font-awesome noto-fonts-cjk ttf-ms-win11-auto
+yay -Sy ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono \
+        ttf-nerd-fonts-symbols-common ttf-font-awesome noto-fonts-cjk ttf-ms-win11-auto
 ```
 
 After that, be sure to refresh the font cache:
@@ -294,12 +310,12 @@ After that, be sure to refresh the font cache:
 fc-cache -fv
 ```
 
-### :floppy_disk: Dotfiles Installation
+## :floppy_disk: Dotfiles Installation
 
-> [!WARNING]
-> Here we can take two routes. **CHOOSE ONE, NOT BOTH!**
+> [!CAUTION]
+> Here we can take two routes (Yadm or Git). **CHOOSE ONE, NOT BOTH!**
 
-- ### <samp>Yadm Method (**recommended**)</samp>
+- **Yadm Method** (_Recommended_)
 
 [Yadm](https://yadm.io/) is amazing. It lets you manage your dotfiles with git without the hassle of creating a git repo on your home directory as well as gitignoring a lot of files.
 
@@ -312,13 +328,13 @@ For now, we are going to install it the simple way without to many complications
 Firstly, **be sure to backup your existing config files**. Then, we are going to install yadm. You can do it using pacman with the following command:
 
 ```bash
-sudo pacman -S yadm
+yay -Sy yadm
 ```
 
 After that, its time to clone the dotfiles repo into your system using yadm.
 
-> [!NOTE]
-> If you any file of the repo that already exists in your system and the content differs, the local file will be left unmodified and you'll have to review the changes and resolve the differences.
+> [!IMPORTANT]
+> If any file in your local machine differs from the one in the remote repository, your local file will remain unmodified. You'll need to manually review and resolve any differences.
 
 ```bash
 yadm clone https://github.com/Matt-FTW/dotfiles.git
@@ -340,10 +356,7 @@ Then, be sure to push your changes to your remote!
 
 Now you can receive new updates from my repo and modify your custom one :sunglasses:
 
-If you had any issues feel free to [open an issue](https://github.com/Matt-FTW/dotfiles/issues/new/choose).
-Do you have some questions about the installation process? You can create a [new discussion post](https://github.com/Matt-FTW/dotfiles/discussions/new/choose) then. Be sure to read the [FAQ](./FAQ.md) first!
-
-- ### <samp>Git Method</samp>
+- **Git Method**
 
 Firstly, clone this repository (remember to have git installed).
 
@@ -364,12 +377,9 @@ Congratulations, at this point your done installing the configuration! :tada:
 
 Logout from your current desktop session and log back into the Hyprland session.
 
-If you had any issues feel free to [open an issue](https://github.com/Matt-FTW/dotfiles/issues/new/choose).
-Do you have some questions about the installation process? You can create a [new discussion post](https://github.com/Matt-FTW/dotfiles/discussions/new/choose) then. Be sure to read the [FAQ](./FAQ.md) first!
+## :heavy_plus_sign: Post Installation
 
-### :heavy_plus_sign: Post Installation
-
-Here are some things you might consider changing:
+Here are some things you might consider changing or adding:
 
 - **Change Outputs**
 
@@ -381,9 +391,132 @@ For more information about Hyprland monitors and workspaces, [check the docs](ht
 
 Now, for the Waybar to appear you also need to change the output definition on [this file](../.config/waybar/config.jsonc).
 
+- **Change Default Applications**
+
+To change the default applications by filetype, be sure to install [this app](https://github.com/magnus-ISU/selectdefaultapplication).
+
+```bash
+yay -Sy selectdefaultapplication-fork-git
+```
+
+If you wanna change the default apps used in the Hyprland bindings, change the variables over on [this file](../.config/hypr/configs/default_apps.conf).
+
 - **Git Changes**
 
 If you are going to use git, be sure to change the user definition as well as the credentials over on the [gitconfig file](../.config/git/config).
+
+- **Laptop Additions**
+
+  - **Automatic CPU Frequency** (_Recommended_)
+
+    This one is a must have for all laptops users, even for desktop pc users as well. Firstly, [install auto-cpufreq](https://github.com/AdnanHodzic/auto-cpufreq):
+
+    ```bash
+    yay -Sy auto-cpufreq
+    ```
+
+    After that, install the daemon by using this command:
+
+    ```bash
+    sudo auto-cpufreq --install
+    ```
+
+    If that didn't work, enable the systemd unit:
+
+    ```bash
+    sudo systemctl enable --now auto-cpufreq.service
+    ```
+
+    Now your good to go, check their documentation for more details on how to configure it. I personally use the default profile it comes with and I didn't had any issues.
+
+  - **Bluetooth**
+
+    Lets start by installing bluez (Bluetooth support) and overskride (GUI):
+
+    ```bash
+    yay -Sy bluez overskride
+    ```
+
+    After installing the required packages, we have to start the Bluetooth service:
+
+    ```bash
+    systemctl --user enable --now bluetooth.service
+    ```
+
+    Now launch overskride and there you have it.
+
+  - **Brightness**
+
+    Brightness control is integrated with [SwayOSD](https://github.com/ErikReider/SwayOSD). It was installed in the first steps, so you should be able to change it. If not, be sure to read [this part](https://github.com/ErikReider/>SwayOSD#brightness-control) on the SwayOSD documentation.
+
+    If you wanna have automatic screen brightness, install [wluma](https://github.com/maximbaz/wluma).
+
+    ```bash
+    yay -Sy wluma
+    ```
+
+    Then, enable the systemd unit.
+
+    ```bash
+    systemctl --user enable --now wluma.service
+    ```
+
+  - **Wi-Fi**
+
+    To manage your Wi-Fi connections, I'd recommend you to install [iwgtk](https://github.com/J-Lentz/iwgtk):
+
+    ```bash
+    yay -Sy iwgtk
+    ```
+
+    To manage all the other network configurations, use [nm-connection-editor](https://gitlab.gnome.org/GNOME/network-manager-applet)
+
+- **Keyring Support**
+
+There are some applications that you might need the keyring for. Examples: bitwarden, dbeaver, protonmail-bridge, vlc...
+
+To enable the keyring support, install the following packages:
+
+```bash
+yay -Sy gnome-keyring libsecret
+```
+
+- **Misc**
+
+  - **Bat**
+
+    Bat needs to rebuild the cache to load the themes. Make sure to run this command:
+
+    ```bash
+    bat cache --build
+    ```
+
+  - **SwayOSD**
+
+    If you want to have a caps-lock popup, enable the swayosd-libinput-backend service:
+
+    ```bash
+    sudo systemctl enable --now swayosd-libinput-backend.service
+    ```
+
+- **Audio Service** (_Optional_)
+
+> [!WARNING]
+> If you have Pipewire already setup on your system, you dont have to follow this step.
+
+Firstly, install this dependencies:
+
+```bash
+yay -Sy pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber alsa-utils
+```
+
+Now enable pipewire and wireplumber systemd services:
+
+```bash
+systemctl --user enable --now pipewire wireplumber
+```
+
+And there you have it.
 
 - **Specific Configs/Information** (_Optional_)
 
@@ -399,12 +532,14 @@ Some configuration examples are:
 - [vscodium](../.config/VSCodium/User/)
 - [tmux](../.config/tmux/)
 
+If you had any issues feel free to [open an issue](https://github.com/Matt-FTW/dotfiles/issues/new/choose).
+Do you have some questions about the installation process? You can create a [new discussion post](https://github.com/Matt-FTW/dotfiles/discussions/new/choose) then. Be sure to read the [FAQ](./FAQ.md) first!
+
 # :camera: ‎ <samp>Gallery</samp>
 
 > [!NOTE]
 > For specific images and videos about each tool, check out their own READMEs at their respective config folders. (STILL WIP 🚧)
-
-> [!NOTE]
+>
 > If you want to check the wallpapers, they are available [right here](../.config/hypr/theme/walls/.github/README.md).
 
 | **System Fetch, Pacman Colorscript, App Launcher and Notif. Center** |
@@ -489,7 +624,7 @@ I wanna point out some resources that helped me the most with the setup:
 
 Those were the biggest inspiring factor for me, though you can find a lot more of setups that helped me in my list of favorite dotfiles from the **Stars** section of my Github Profile: [Check it out!](https://github.com/stars/Matt-FTW/lists/paintbrush-theming-dots)
 
-### :writing_hand: Contributing
+## :writing_hand: Contributing
 
 Part of what makes the open source community special are the contributions. Any contributions will be **highly appreciated!**
 
@@ -499,7 +634,7 @@ Please, before submitting a PR or opening an issue, be sure to follow the [contr
 
 Blank or repeated issues and PRs will be closed.
 
-### :dollar: Donating
+## :dollar: Donating
 
 If you want to support my work, please consider donating.
 
@@ -511,13 +646,13 @@ Thank you! :sparkling_heart:
 [![](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&color=ed8796&logoColor=D9E0EE&labelColor=302D41)](https://ko-fi.com/matt_ftw)
 [![](https://img.shields.io/badge/-buy_me_a%C2%A0coffee-gray?style=for-the-badge&logo=buy-me-a-coffee&color=eed49f&logoColor=D9E0EE&labelColor=302D41)](https://www.buymeacoffee.com/matt_ftw)
 
-### :two_hearts: Star History and Contributors
+## :two_hearts: Star History and Contributors
 
 Thanks to everyone who have contributed and given an star to this project!
 
 <div align="center">
 
-#### :pencil2: Contributors
+### :pencil2: Contributors
 
 </div>
 
@@ -527,7 +662,7 @@ Thanks to everyone who have contributed and given an star to this project!
 
 <div align="center">
 
-#### :star: Star History
+### :star: Star History
 
 </div>
 

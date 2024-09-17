@@ -139,10 +139,6 @@ map("n", "<leader>cir", "<cmd>LazyRoot<cr>", { desc = "Root" })
 -- U for redo
 map("n", "U", "<C-r>", { desc = "Redo" })
 
--- Move to beginning/end of line
-map("n", "<a-h>", "_", { desc = "First Character of Line" })
-map("n", "<a-l>", "$", { desc = "Last Character of Line" })
-
 -- Copy whole text to clipboard
 map("n", "<C-c>", ":%y+<CR>", { desc = "Copy Whole Text to Clipboard", silent = true })
 
@@ -192,6 +188,19 @@ end, { desc = "Dashboard" })
 map("n", "<leader>!", "zg", { desc = "Add Word to Dictionary" })
 map("n", "<leader>@", "zug", { desc = "Remove Word from Dictionary" })
 
+-- Terminal Stuff
+if not LazyVim.has("floaterm.nvim") or not LazyVim.has("toggleterm.nvim") then
+  local lazyterm = function()
+    LazyVim.terminal(nil, { size = { width = 0.8, height = 0.8 }, cwd = LazyVim.root() })
+  end
+  map("n", "<leader>ft", lazyterm, { desc = "Terminal (Root Dir)" })
+  map("n", "<leader>fT", function()
+    LazyVim.terminal(nil, { size = { width = 0.8, height = 0.8 }, cwd = vim.fn.getcwd() })
+  end, { desc = "Terminal (cwd)" })
+  map("n", [[<c-\>]], lazyterm, { desc = "Terminal (Root Dir)" })
+  map("t", [[<c-\>]], "<cmd>close<cr>", { desc = "Hide Terminal" })
+end
+
 -- Marks
 map("n", "dm", function()
   local cur_line = vim.fn.line(".")
@@ -220,7 +229,7 @@ map("n", "go", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc
 map({ "c", "i", "t" }, "<M-BS>", "<C-w>", { desc = "Delete Word" })
 
 -- Git
-map("n", "<leader>ghB", LazyVim.lazygit.blame_line, { desc = "Blame Line (LazyGit)" })
+map("n", "<leader>ghb", LazyVim.lazygit.blame_line, { desc = "Blame Line" })
 
 -- Windows Split
 map("n", "<leader>_", "<C-W>s", { desc = "Split Window Below", remap = true })

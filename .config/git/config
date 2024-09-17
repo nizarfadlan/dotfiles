@@ -1,8 +1,8 @@
-[includeIf "gitdir:~/dev/work/"]
-  path = ~/.config/git/config-work
-
 [include]
   path = ~/.config/git/themes/catppuccin.gitconfig
+
+[includeIf "gitdir:~/dev/work/"]
+  path = ~/.config/git/config-work
 
 [user]
   name = Nizar Izzuddin Yatim Fadlan
@@ -51,6 +51,8 @@
   features = catppuccin-macchiato
   side-by-side = false
   true-color = always
+  hyperlinks = true
+  line-numbers = true
 
 [merge]
   tool = nvimdiff

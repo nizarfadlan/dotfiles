@@ -127,7 +127,7 @@
       - nwg-displays
       - nwg-look
       - pyprland
-      - wl-clip-persist
+      - waybar-updates
 
       # Hooks
       - check-broken-packages-pacman-hook-git
@@ -148,6 +148,7 @@
       - tgpt-bin
 
       # Tools
+      - auto-cpufreq
       - devify
       - upscayl-bin
       - downgrade

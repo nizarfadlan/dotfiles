@@ -43,13 +43,13 @@
 #custom-fans,
 #clock,
 #idle_inhibitor,
+#bluetooth,
 #custom-wf-recorder,
 #pulseaudio,
 #backlight,
 #network,
 #tray,
 #custom-power-menu,
-#custom-updates,
 #language,
 #window,
 #custom-weather,
@@ -225,6 +225,10 @@ window#waybar.hidden {
   color: @peach;
 }
 
+#bluetooth {
+  color: @blue;
+}
+
 #window {
   background: linear-gradient(
     52deg,
@@ -321,9 +325,17 @@ window#waybar.hidden {
   color: @mantle;
 }
 
+#network {
+  color: @mantle;
+}
+
 #network.disconnected {
   background-color: @red;
   color: @mantle;
+}
+
+#network.linked {
+  color: @yellow;
 }
 
 #clock.cl2 {

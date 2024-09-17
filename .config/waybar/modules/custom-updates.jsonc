@@ -2,12 +2,13 @@
   "custom/updates": {
     "format": "{} {icon}",
     "return-type": "json",
+    "tooltip": true,
     "format-icons": {
-      "has-updates": "󱍷",
-      "updated": "󰂪",
+      "pending-updates": " ",
+      "updated": " ",
     },
-    "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates",
+    "exec-if": "which waybar-updates",
+    "exec": "waybar-updates",
     "on-click": "pypr toggle topgrade-system",
     "on-click-right": "pypr toggle topgrade-all",
   },
