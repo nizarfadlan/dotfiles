@@ -325,7 +325,13 @@ window#waybar.hidden {
   color: @mantle;
 }
 
-#network {
+#network.wifi {
+  background-color: @yellow;
+  color: @mantle;
+}
+
+#network.wired {
+  background-color: @yellow;
   color: @mantle;
 }
 
@@ -335,7 +341,8 @@ window#waybar.hidden {
 }
 
 #network.linked {
-  color: @yellow;
+  background-color: @yellow;
+  color: @mantle;
 }
 
 #clock.cl2 {

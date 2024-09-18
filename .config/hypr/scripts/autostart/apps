@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Apps
-spotify &
+code &
+zen-browser &
 vesktop &
 
 # Terminal Apps
