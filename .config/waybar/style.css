@@ -326,13 +326,11 @@ window#waybar.hidden {
 }
 
 #network.wifi {
-  background-color: @yellow;
-  color: @mantle;
+  color: @yellow;
 }
 
 #network.wired {
-  background-color: @yellow;
-  color: @mantle;
+  color: @yellow;
 }
 
 #network.disconnected {
@@ -341,8 +339,7 @@ window#waybar.hidden {
 }
 
 #network.linked {
-  background-color: @yellow;
-  color: @mantle;
+  color: @yellow;
 }
 
 #clock.cl2 {
