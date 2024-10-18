@@ -11,7 +11,7 @@
     "margin-top": 10,
     "margin-left": 10,
     "margin-bottom": 0,
-    "margin-right": 10,
+    "margin-right": 10
   },
   {
     "include": "~/.config/waybar/bars/bar-2.jsonc",
@@ -40,6 +40,6 @@
     "margin-top": 10,
     "margin-left": 10,
     "margin-bottom": 0,
-    "margin-right": 10,
-  },
+    "margin-right": 10
+  }
 ]
